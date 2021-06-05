@@ -2,6 +2,8 @@ class Mane():
     def __init__(self, config=None):
         # self.totalpits = config.__TOTALPITS__
         self.totalpits = 14
+        self.seedKaayis = 12
+        self.seedKashiPit = 1
         self.kaashiPits = { 'a': 3, 'b': 10}
         self.Pits = []
 
@@ -20,6 +22,20 @@ class Mane():
             return -1
 
         return self.Pits[self.kaashiPits[player]]
+
+    def isKashiPit(self, _pit):
+        if _pit.getID() not in (self.kaashiPits.values()):
+            return False
+        return True
+
+    def fillPits(self):
+        if (len(self.Pits) < 14):
+            return -1
+        for _pit in self.Pits:
+            if (self.isKashiPit(_pit)):
+                _pit.putKaayi(self.seedKashiPit)
+            else:
+                _pit.putKaayi(self.seedKaayis)
 
     
     
