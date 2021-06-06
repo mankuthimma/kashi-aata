@@ -37,8 +37,8 @@ class Mane():
             else:
                 _pit.putKaayi(self.seedKaayis)
 
-    
-    
+
+   
 
 class Pit():
     def __init__(self):
@@ -57,3 +57,23 @@ class Pit():
     def putKaayi(self, nos=1):
         self.kaayis += nos
 
+class Player():
+    def __init__(self):
+        self.id = None
+        self.kaays_in_hand = 0
+        self.kaays_in_pits = 0
+
+    def kaaysInHand(self):
+        return self.kaays_in_hand
+
+    def putKaayInHand(self, numKaays=0):
+        self.kaays_in_hand += numKaays
+
+    def kaaysInPits(self, pits=None):
+        if not pits:
+            return self.kaays_in_pits
+        _kaays_in_pits = 0
+        for _pit in pits:
+            _kaays_in_pits += _pit.kaayCount()
+        self.kaays_in_pits = _kaays_in_pits
+        return _kaays_in_pits
